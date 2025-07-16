@@ -56,16 +56,16 @@ src/
 
 
 📸 Скриншоты приложения
-Интерфейс приложения:
+-Интерфейс приложения:
 <img width="500" height="auto" alt="image" src="https://github.com/user-attachments/assets/5be2e687-fa72-4371-aa41-964f55667105" />
 
-Сортировка:
+-Сортировка:
 <img width="500" height="auto" alt="image" src="https://github.com/user-attachments/assets/0647b5e5-70fe-4103-9136-87ccbca95970" />
 
-Редактирование:
+-Редактирование:
 <img width="500" height="auto" alt="image" src="https://github.com/user-attachments/assets/b54e1556-feea-48e4-a1f0-86ae71f024e0" />
 
-Карта:
+-Карта:
 <img width="500" height="auto" alt="image" src="https://github.com/user-attachments/assets/7b86e475-9a08-4722-a8fe-e01033bb43b5" />
 
 
