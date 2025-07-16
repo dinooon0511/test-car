@@ -57,7 +57,8 @@ src/
 
 📸 Скриншот
 
-![screenshot](./screenshot.png)
+<img width="1019" height="732" alt="image" src="https://github.com/user-attachments/assets/5be2e687-fa72-4371-aa41-964f55667105" />
+
 
 ---
 
