@@ -122,6 +122,8 @@ body {
   display: flex;
   gap: 10px;
   align-items: center;
+  flex-wrap: wrap;
+  max-width: 100%;
 }
 .vehicle-input {
   padding: 7px 12px;
@@ -133,6 +135,8 @@ body {
   color: #001733;
   outline: none;
   transition: border 0.2s;
+  max-width: 160px;
+  box-sizing: border-box;
 }
 .vehicle-input:focus {
   border: 1.5px solid #001733;
@@ -171,5 +175,10 @@ body {
     flex-direction: column;
     gap: 8px;
     width: 100%;
+    max-width: 100%;
+  }
+  .vehicle-input {
+    width: 100%;
+    max-width: 100%;
   }
 } 
