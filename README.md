@@ -57,7 +57,7 @@ src/
 
 📸 Скриншот
 
-<img width="1019" height="732" alt="image" src="https://github.com/user-attachments/assets/5be2e687-fa72-4371-aa41-964f55667105" />
+<img width="500" height="auto" alt="image" src="https://github.com/user-attachments/assets/5be2e687-fa72-4371-aa41-964f55667105" />
 
 
 ---
