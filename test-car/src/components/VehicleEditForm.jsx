@@ -10,13 +10,14 @@ const VehicleEditForm = ({ vehicle, onSave, onCancel }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: 16 }}>
+    <form onSubmit={handleSubmit} className="vehicle-edit-form">
       <input
         type="text"
         value={name}
         onChange={e => setName(e.target.value)}
         placeholder="Название"
         required
+        className="vehicle-input"
       />
       <input
         type="number"
@@ -24,10 +25,10 @@ const VehicleEditForm = ({ vehicle, onSave, onCancel }) => {
         onChange={e => setPrice(Number(e.target.value))}
         placeholder="Цена"
         required
-        style={{ marginLeft: 8 }}
+        className="vehicle-input"
       />
-      <button type="submit" style={{ marginLeft: 8 }}>Сохранить</button>
-      <button type="button" onClick={onCancel} style={{ marginLeft: 8 }}>Отмена</button>
+      <button type="submit" className="vehicle-btn vehicle-btn-save">Сохранить</button>
+      <button type="button" onClick={onCancel} className="vehicle-btn vehicle-btn-cancel">Отмена</button>
     </form>
   );
 };

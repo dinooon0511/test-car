@@ -46,27 +46,29 @@ const VehicleList = () => {
   const sortedVehicles = sortVehicles(vehicles, sortBy, sortOrder);
 
   return (
-    <div>
-      <h2>Список машин</h2>
-      <div style={{ marginBottom: '1rem' }}>
+    <div className="vehicle-app-container">
+      <h2 className="vehicle-title">Список машин</h2>
+      <div className="vehicle-sort-panel">
         <label>
           Сортировать по:
-          <select value={sortBy} onChange={e => setSortBy(e.target.value)} style={{ marginLeft: 8, marginRight: 16 }}>
+          <select value={sortBy} onChange={e => setSortBy(e.target.value)} className="vehicle-select">
             <option value="year">Год</option>
             <option value="price">Цена</option>
           </select>
         </label>
         <label>
           Порядок:
-          <select value={sortOrder} onChange={e => setSortOrder(e.target.value)} style={{ marginLeft: 8 }}>
+          <select value={sortOrder} onChange={e => setSortOrder(e.target.value)} className="vehicle-select">
             <option value="asc">По возрастанию</option>
             <option value="desc">По убыванию</option>
           </select>
         </label>
       </div>
-      <ul>
+      {loading && <div className="vehicle-action-loading">Сохраняем изменения...</div>}
+      {error && <div className="vehicle-action-error">Ошибка: {error}</div>}
+      <ul className="vehicle-list">
         {sortedVehicles.map(vehicle => (
-          <li key={vehicle.id}>
+          <li key={vehicle.id} className="vehicle-list-item">
             {editingId === vehicle.id ? (
               <VehicleEditForm
                 vehicle={vehicle}
@@ -75,9 +77,9 @@ const VehicleList = () => {
               />
             ) : (
               <>
-                {vehicle.name} | {vehicle.model} | {vehicle.year} | {vehicle.price}
-                <button style={{ marginLeft: 8 }} onClick={() => handleEdit(vehicle.id)}>Редактировать</button>
-                <button style={{ marginLeft: 8 }} onClick={() => handleDelete(vehicle.id)}>Удалить</button>
+                <span className="vehicle-info">{vehicle.name} | {vehicle.model} | {vehicle.year} | {vehicle.price}</span>
+                <button className="vehicle-btn vehicle-btn-edit" onClick={() => handleEdit(vehicle.id)}>Редактировать</button>
+                <button className="vehicle-btn vehicle-btn-delete" onClick={() => handleDelete(vehicle.id)}>Удалить</button>
               </>
             )}
           </li>
