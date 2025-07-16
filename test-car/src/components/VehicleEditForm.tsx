@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
+import { Vehicle } from '../utils/sortUtils';
 
-const VehicleEditForm = ({ vehicle, onSave, onCancel }) => {
-  const [name, setName] = useState(vehicle.name);
-  const [price, setPrice] = useState(vehicle.price);
+interface VehicleEditFormProps {
+  vehicle: Vehicle;
+  onSave: (vehicle: Vehicle) => void;
+  onCancel: () => void;
+}
 
-  const handleSubmit = (e) => {
+const VehicleEditForm: React.FC<VehicleEditFormProps> = ({ vehicle, onSave, onCancel }) => {
+  const [name, setName] = useState<string>(vehicle.name);
+  const [price, setPrice] = useState<number>(vehicle.price);
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSave({ ...vehicle, name, price });
   };
