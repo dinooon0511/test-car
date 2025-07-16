@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchVehicles, updateVehicle, deleteVehicle } from '../services/vehicleService';
 import { sortVehicles, Vehicle } from '../utils/sortUtils';
 import VehicleEditForm from './VehicleEditForm';
+import VehicleMap from './VehicleMap';
 
 const VehicleList: React.FC = () => {
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
@@ -39,8 +40,17 @@ const VehicleList: React.FC = () => {
     setActionLoading(true);
     setActionError(null);
     try {
-      const updated = await updateVehicle(updatedVehicle);
-      setVehicles(vehicles => vehicles.map(v => v.id === updated.id ? updated : v));
+      try {
+        const updated = await updateVehicle(updatedVehicle);
+        setVehicles(vehicles => vehicles.map(v => v.id === updated.id ? updated : v));
+      } catch (err: any) {
+        // Если ошибка 405, обновляем только локально
+        if (err instanceof Error && err.message.includes('Ошибка при обновлении машины')) {
+          setVehicles(vehicles => vehicles.map(v => v.id === updatedVehicle.id ? updatedVehicle : v));
+        } else {
+          throw err;
+        }
+      }
       setEditingId(null);
     } catch (err: any) {
       setActionError(err.message);
@@ -108,6 +118,7 @@ const VehicleList: React.FC = () => {
           </li>
         ))}
       </ul>
+      {vehicles.length > 0 && <VehicleMap vehicles={vehicles} />}
     </div>
   );
 };
