@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchVehicles } from '../services/vehicleService';
 import { sortVehicles } from '../utils/sortUtils';
+import VehicleEditForm from './VehicleEditForm';
 
 const VehicleList = () => {
   const [vehicles, setVehicles] = useState([]);
@@ -8,6 +9,11 @@ const VehicleList = () => {
   const [error, setError] = useState(null);
   const [sortBy, setSortBy] = useState('year');
   const [sortOrder, setSortOrder] = useState('asc');
+  const [editingId, setEditingId] = useState(null);
+
+  const handleDelete = (id) => {
+    setVehicles(vehicles => vehicles.filter(v => v.id !== id));
+  };
 
   useEffect(() => {
     fetchVehicles()
@@ -20,6 +26,19 @@ const VehicleList = () => {
         setLoading(false);
       });
   }, []);
+
+  const handleEdit = (id) => {
+    setEditingId(id);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingId(null);
+  };
+
+  const handleSaveEdit = (updatedVehicle) => {
+    setVehicles(vehicles => vehicles.map(v => v.id === updatedVehicle.id ? updatedVehicle : v));
+    setEditingId(null);
+  };
 
   if (loading) return <div>Загрузка...</div>;
   if (error) return <div>Ошибка: {error}</div>;
@@ -48,7 +67,19 @@ const VehicleList = () => {
       <ul>
         {sortedVehicles.map(vehicle => (
           <li key={vehicle.id}>
-            {vehicle.name} | {vehicle.model} | {vehicle.year} | {vehicle.price}
+            {editingId === vehicle.id ? (
+              <VehicleEditForm
+                vehicle={vehicle}
+                onSave={handleSaveEdit}
+                onCancel={handleCancelEdit}
+              />
+            ) : (
+              <>
+                {vehicle.name} | {vehicle.model} | {vehicle.year} | {vehicle.price}
+                <button style={{ marginLeft: 8 }} onClick={() => handleEdit(vehicle.id)}>Редактировать</button>
+                <button style={{ marginLeft: 8 }} onClick={() => handleDelete(vehicle.id)}>Удалить</button>
+              </>
+            )}
           </li>
         ))}
       </ul>
