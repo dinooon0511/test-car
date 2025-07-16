@@ -1,22 +1,33 @@
+$color-bg-main: #F5FAFE;
+$color-bg-card: #fff;
+$color-primary: #3D7AA6;
+$color-secondary: #33455D;
+$color-accent: #001733;
+$color-shadow: rgba(61, 122, 166, 0.10);
+$color-text-main: #001733;
+$color-text-light: #fff;
+$color-text-secondary: #33455D;
+$font-main: Helvetica, Arial, sans-serif;
+
 body {
-  background: linear-gradient(135deg, #F5FAFE 0%, #3D7AA6 100%);
+  background: linear-gradient(135deg, $color-bg-main 0%, $color-primary 100%);
   min-height: 100vh;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: $font-main;
   margin: 0;
-  color: #001733;
+  color: $color-text-main;
 }
 
 .vehicle-app-container {
   max-width: 600px;
   margin: 40px auto;
-  background: #fff;
+  background: $color-bg-card;
   border-radius: 18px;
-  box-shadow: 0 4px 24px 0 rgba(61, 122, 166, 0.08);
+  box-shadow: 0 4px 24px 0 $color-shadow;
   padding: 32px 24px 24px 24px;
 }
 
 .vehicle-title {
-  color: #001733;
+  color: $color-accent;
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 24px;
@@ -35,16 +46,16 @@ body {
   margin-left: 8px;
   padding: 6px 12px;
   border-radius: 6px;
-  border: 1px solid #3D7AA6;
-  background: #F5FAFE;
-  color: #001733;
+  border: 1px solid $color-primary;
+  background: $color-bg-main;
+  color: $color-accent;
   font-family: inherit;
   font-size: 1rem;
   outline: none;
   transition: border 0.2s;
-}
-.vehicle-select:focus {
-  border: 1.5px solid #3D7AA6;
+  &:focus {
+    border: 1.5px solid $color-primary;
+  }
 }
 
 .vehicle-list {
@@ -57,20 +68,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #F5FAFE;
+  background: $color-bg-main;
   border-radius: 10px;
   margin-bottom: 14px;
   padding: 14px 18px;
-  box-shadow: 0 2px 8px 0 rgba(51, 69, 93, 0.04);
+  box-shadow: 0 2px 8px 0 $color-shadow;
   transition: box-shadow 0.2s;
-}
-.vehicle-list-item:hover {
-  box-shadow: 0 4px 16px 0 rgba(61, 122, 166, 0.10);
+  &:hover {
+    box-shadow: 0 4px 16px 0 $color-shadow;
+  }
 }
 
 .vehicle-info {
   flex: 1;
-  color: #001733;
+  color: $color-accent;
   font-size: 1.08rem;
   font-weight: 500;
 }
@@ -84,38 +95,38 @@ body {
   margin-left: 8px;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
-}
-.vehicle-btn-edit {
-  background: #3D7AA6;
-  color: #fff;
-}
-.vehicle-btn-edit:hover {
-  background: #33455D;
-}
-.vehicle-btn-delete {
-  background: #fff;
-  color: #3D7AA6;
-  border: 1px solid #3D7AA6;
-}
-.vehicle-btn-delete:hover {
-  background: #3D7AA6;
-  color: #fff;
-}
-.vehicle-btn-save {
-  background: #001733;
-  color: #fff;
-}
-.vehicle-btn-save:hover {
-  background: #3D7AA6;
-}
-.vehicle-btn-cancel {
-  background: #fff;
-  color: #001733;
-  border: 1px solid #001733;
-}
-.vehicle-btn-cancel:hover {
-  background: #33455D;
-  color: #fff;
+  &-edit {
+    background: $color-primary;
+    color: $color-text-light;
+    &:hover {
+      background: $color-secondary;
+    }
+  }
+  &-delete {
+    background: $color-bg-card;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+    &:hover {
+      background: $color-primary;
+      color: $color-text-light;
+    }
+  }
+  &-save {
+    background: $color-accent;
+    color: $color-text-light;
+    &:hover {
+      background: $color-primary;
+    }
+  }
+  &-cancel {
+    background: $color-bg-card;
+    color: $color-accent;
+    border: 1px solid $color-accent;
+    &:hover {
+      background: $color-secondary;
+      color: $color-text-light;
+    }
+  }
 }
 
 .vehicle-edit-form {
@@ -128,29 +139,29 @@ body {
 .vehicle-input {
   padding: 7px 12px;
   border-radius: 6px;
-  border: 1px solid #3D7AA6;
+  border: 1px solid $color-primary;
   font-size: 1rem;
   font-family: inherit;
-  background: #fff;
-  color: #001733;
+  background: $color-bg-card;
+  color: $color-accent;
   outline: none;
   transition: border 0.2s;
   max-width: 160px;
   box-sizing: border-box;
-}
-.vehicle-input:focus {
-  border: 1.5px solid #001733;
+  &:focus {
+    border: 1.5px solid $color-accent;
+  }
 }
 
 .vehicle-action-loading {
-  color: #3D7AA6;
+  color: $color-primary;
   text-align: center;
   margin-bottom: 10px;
   font-size: 1.1rem;
 }
 .vehicle-action-error {
-  color: #fff;
-  background: #3D7AA6;
+  color: $color-text-light;
+  background: $color-primary;
   border-radius: 6px;
   padding: 8px 0;
   text-align: center;
